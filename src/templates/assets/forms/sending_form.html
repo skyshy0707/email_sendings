@@ -1,0 +1,37 @@
+
+<!DOCTYPE html> 
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'app/css/sending_form_styles.css' %}">
+</head>
+
+<div id="open_select_subscribers_form" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Отправление рассылок</h3>
+                <a href="#close" title="Close" class="close">×</a>
+              </div>
+            <div class="modal-body">
+                <form id="sendings">
+                    {% csrf_token %}
+                    <select id="select_subscribers" name="subscribers" multiple>
+                        {% for subscriber in page_obj %}
+                            <option id="{{ subscriber.id }}" value="{{ subscriber.id }}">{{ subscriber.first_name }} {{subscriber.last_name}}</option>
+                        {% endfor %} 
+                    </select>
+                    
+                    <p><button type="submit">SEND</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<a href="#open_select_subscribers_form">РАССЫЛКИ</a>
+
+<script src="{% static 'app/js/sending_form.js' %}"></script>
+
+</html>
+

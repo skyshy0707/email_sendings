@@ -1,0 +1,5 @@
+.log
+.pid
+.pyc
+.sqlite3
+migrations/
